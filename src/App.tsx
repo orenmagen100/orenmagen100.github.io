@@ -1,46 +1,77 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Code2, Globe, Layout, Linkedin, Github, Mail, ExternalLink, Server } from 'lucide-react';
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-indigo-600" />
-            <span className="text-xl font-bold text-gray-900">Omtensify</span>
-          </div>
-          <div className="hidden md:flex space-x-8">
-            <a href="#services" className="text-gray-600 hover:text-indigo-600">Services</a>
-            <a href="#about" className="text-gray-600 hover:text-indigo-600">About</a>
-            <a href="#projects" className="text-gray-600 hover:text-indigo-600">Projects</a>
-            <a href="#contact" className="text-gray-600 hover:text-indigo-600">Contact</a>
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center space-x-2">
+              <Code2 className="h-6 w-6 text-indigo-600" />
+              <span className="text-xl font-bold text-gray-900">Omtensify</span>
+            </div>
+            <div className="hidden md:flex space-x-8">
+              <a href="#services" className="text-gray-600 hover:text-indigo-600">Services</a>
+              <a href="#about" className="text-gray-600 hover:text-indigo-600">About</a>
+              <a href="#projects" className="text-gray-600 hover:text-indigo-600">Projects</a>
+              <a href="#contact" className="text-gray-600 hover:text-indigo-600">Contact</a>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
   );
 }
 
 function Hero() {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffset(window.pageYOffset);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="relative bg-white pt-16 pb-32 overflow-hidden">
-      <div className="relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          <div className="text-center">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block">Omtensify</span>
-              <span className="block text-indigo-600">Coding Solutions</span>
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Transforming ideas into elegant, scalable solutions. Building the future of web technology, one line of code at a time.
-            </p>
+      <div className="relative bg-black pt-16 pb-32 overflow-hidden min-h-screen">
+        <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transform: `translateY(${offset * 0.5}px)`,
+              opacity: 0.6
+            }}
+        />
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div className="text-center">
+              <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+                <span className="block mb-2">Omtensify</span>
+                <span className="block text-indigo-400">Coding Solutions</span>
+              </h1>
+              <p className="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                Transforming ideas into elegant, scalable solutions. Building the future of web technology, one line of code at a time.
+              </p>
+            </div>
           </div>
         </div>
+        <div
+            className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"
+            style={{
+              transform: `translateY(${offset * 0.3}px)`,
+            }}
+        />
       </div>
-    </div>
   );
 }
+
 
 function Services() {
   const services = [
@@ -55,7 +86,7 @@ function Services() {
       icon: Server
     },
     {
-      title: "E2E Websites",
+      title: "Code Architecture",
       description: "Complete website solutions from design to deployment",
       icon: Layout
     }
@@ -103,7 +134,7 @@ function About() {
           <div className="mt-10 lg:mt-0">
             <img
               className="rounded-lg shadow-lg"
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+              src="https://i.imghippo.com/files/quO1332cAI.png"
               alt="Developer working"
             />
           </div>
@@ -116,26 +147,41 @@ function About() {
 function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with React and Node.js",
-      link: "#"
+      title: "Signal Desktop",
+      description: "Signal Desktop is an Electron application that links with Signal on Android or iOS",
+      link: "https://github.com/orenmagen100/Signal-Desktop"
     },
     {
-      title: "Task Management System",
-      description: "Real-time task management application with collaborative features",
-      link: "#"
+      title: "Next Insurance",
+      description: "Tailored business insurance.",
+      link: "https://www.nextinsurance.com/"
     },
     {
-      title: "Open Source Contributions",
-      description: "Active contributor to various open source projects",
-      link: "#"
+      title: "HoneyBook",
+      description: "Client relationship platform for independent businesses",
+      link: "https://www.honeybook.com/"
+    },
+    {
+      title: "WalkMe",
+      description: "Leading digital adoption platform",
+      link: "https://www.walkme.com/"
+    },
+    {
+      title: "Tikal",
+      description: "Software development & consulting company",
+      link: "https://www.tikal.com/"
+    },
+    {
+      title: "Outbrain",
+      description: "Outbrain connects businesses with engaged audiences",
+      link: "https://www.outbrain.com/"
     }
   ];
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center">Featured Projects</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 text-center">Featured Projects I Took Part Building</h2>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           {projects.map((project) => (
             <div key={project.title} className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -165,7 +211,7 @@ function Contact() {
         <h2 className="text-3xl font-extrabold text-gray-900 text-center">Get in Touch</h2>
         <div className="mt-12 flex justify-center space-x-6">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/oren-magen/"
             className="text-gray-400 hover:text-indigo-600 transition duration-300"
             target="_blank"
             rel="noopener noreferrer"
@@ -173,7 +219,7 @@ function Contact() {
             <Linkedin className="h-8 w-8" />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/orenmagen100"
             className="text-gray-400 hover:text-indigo-600 transition duration-300"
             target="_blank"
             rel="noopener noreferrer"
@@ -181,7 +227,7 @@ function Contact() {
             <Github className="h-8 w-8" />
           </a>
           <a
-            href="mailto:contact@omtensify.com"
+            href="mailto:orenmagen100@gmail.com"
             className="text-gray-400 hover:text-indigo-600 transition duration-300"
           >
             <Mail className="h-8 w-8" />
