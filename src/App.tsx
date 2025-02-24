@@ -132,10 +132,10 @@ function About() {
             </p>
           </div>
           <div className="mt-10 lg:mt-0">
-            <img
-              className="rounded-lg shadow-lg"
-              src="https://i.imghippo.com/files/quO1332cAI.png"
-              alt="Developer working"
+           <img
+              className="rounded-lg shadow-lg max-h-96"
+              src="https://i.imghippo.com/files/sXG2881EE.png"
+              alt="Omtensify"
             />
           </div>
         </div>
@@ -232,6 +232,13 @@ function Contact() {
           >
             <Mail className="h-8 w-8" />
           </a>
+        </div>
+         <div className="mt-12 flex justify-center space-x-6">
+          <img
+              className="rounded-lg shadow-lg max-h-48"
+              src="https://i.imghippo.com/files/quO1332cAI.png"
+              alt="Omtensify Profile"
+          />
         </div>
       </div>
     </section>
