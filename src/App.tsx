@@ -134,7 +134,7 @@ function About() {
           <div className="mt-10 lg:mt-0">
            <img
               className="rounded-lg shadow-lg max-h-96"
-              src="https://i.imghippo.com/files/sXG2881EE.png"
+              src="https://i.postimg.cc/hGVhNyVV/oren-Clean-Square.png"
               alt="Omtensify"
             />
           </div>
@@ -236,7 +236,7 @@ function Contact() {
          <div className="mt-12 flex justify-center space-x-6">
           <img
               className="rounded-lg shadow-lg max-h-48"
-              src="https://i.imghippo.com/files/quO1332cAI.png"
+              src="https://iili.io/ftHGbv2.jpg"
               alt="Omtensify Profile"
           />
         </div>
